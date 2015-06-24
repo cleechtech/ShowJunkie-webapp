@@ -9,7 +9,7 @@ module.exports = {
 	},
 	production: {
 		rootPath: rootPath,
-		db: process.env.MONGOLAB_URI || 'you can add a mongolab uri here ($ heroku config | grep MONGOLAB_URI)',
+		db: process.env.MONGOLAB_URI || 'mongodb://heroku_wsg0g233:80q4gh8in9ub56gk9e2ega596a@ds037087.mongolab.com:37087/heroku_wsg0g233',
 		port: process.env.PORT || 80
 	}
 };
