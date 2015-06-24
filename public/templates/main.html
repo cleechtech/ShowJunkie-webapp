@@ -1,10 +1,28 @@
-
-
-<div class='jumbotron text-center'>
-	<h1>Welcome to mean-starter</h1>
-
-	<p>Start building! <b>find me in public/templates/main.html)</b></p>
-
-	<div class='btn btn-success'>{{button}}</div>
-
+<div class="item item-divider"> 
+    Follow artists
 </div>
+<!-- Filter Search -->
+<div class="list">
+	<label class="item item-input">
+		<input type="text" placeholder="Artist/Genre" data-ng-model="searchText">
+	</label>
+</div>
+<b>Showing {{feedLimit}}/{{artists.length}} shows</b>
+
+<ul class="list">
+	
+	<li class="list-group-item" ng-repeat="artist in artists | filter:searchText | limitTo: feedLimit">
+		<img ng-src="{{artist.images[artist.images.length-1].url}}">
+		{{artist.name}}
+		<div class='btn pull-right' 
+			ng-class='{"btn-info": followingArtists[artist.name], "btn-default":!followingArtists[artist.name]}' 
+			ng-click="updateFollowing(artist.name, $index)">
+			{{followingArtists[artist.name] && ("Following") || ("Follow")}}
+		</div>		
+		
+	</li>
+	<div class="list list-inset" ng-if='artists.length > feedLimit'>
+		<div class="item" id="showMore"
+			ng-click="increaseFeed()">Show More...</div>
+	</div>
+</ul>

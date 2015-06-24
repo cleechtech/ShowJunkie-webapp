@@ -1,4 +1,20 @@
 
 <h1>Login</h1>
-
-<a class='btn btn-success' href='/api/login'>Login with Spotify</a>
+		
+<div class="list list-inset">
+	<form ng-submit="login()">
+		<p ng-show='error' style='color:red;'>{{ error }}</p>
+		<label class="item item-input">
+			<input type='email' name='email' id='email' ng-model='user.email' placeholder='email'>
+		</label>
+		<br>
+		<label class="item item-input">
+			<input type='password' ng-model='user.password' placeholder='password'>
+		</label>
+		<br>
+		<a ui-sref='resetPassword'>Forgot password?</a> or <a href ui-sref="register">Create an account</a>
+		<br>
+		<br>
+		<button type='submit' class="button button-block button-calm">Login</button>
+	</form>
+</div>

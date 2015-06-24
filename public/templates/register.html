@@ -1,2 +1,24 @@
+<h2>Sign up</h2>
 
-<h3>Register</h3>
+<div class="list list-inset">
+	<form ng-submit="register()">
+		<div ng-show='error || form.$error'>
+			<p ng-show='error' class='text-danger'>{{ error }}</p>
+		</div>
+
+		<label class="item item-input">
+			<input type='email' name='email' id='email' ng-model='user.email' placeholder='Email'>
+		</label>
+		<br>
+		<label class="item item-input">
+			<input type='password' ng-model='user.password' placeholder='Password'>
+		</label>
+		<br>
+		or <a href ui-sref="login">Already have an account?</a>
+		<br>
+		<br>
+		<button type='submit' class="button button-block button-calm">
+			Register
+		</button>
+	</form>
+</div>

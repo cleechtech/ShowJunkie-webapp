@@ -5,6 +5,5 @@ mean-starter
 ```
 $ git clone <this_repo>
 $ npm install
-$ nodemon server # OR npm start
+$ node server
 ```
-![aaaand I'm a dork](http://i.imgur.com/Vl8Ol6N.jpg)
