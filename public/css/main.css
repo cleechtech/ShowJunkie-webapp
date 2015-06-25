@@ -1,2 +1,7 @@
 
 body { padding-top: 70px; }
+
+.portfolio-item {
+    margin-bottom: 25px;
+    min-height:400px;
+}

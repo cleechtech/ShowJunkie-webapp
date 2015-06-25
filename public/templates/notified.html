@@ -1,35 +1,24 @@
-<div class="list">
-	<div class="item item-divider"> 
-        Your Shows
-    </div>
-    <!-- Filter Search -->
-    <div class="list">
-    	<label class="item item-input">
-    		<input type="text" placeholder="search events" data-ng-model="showSearchText">
-    	</label>
-    </div>
-    <!-- Lists Events -->
-    <ion-list
-    	show-delete="shouldShowDelete">
-    	<b>Showing {{feedLimit}}/{{myEvents.length}} shows</b>
-    	<!-- TODO look into using collection-repeat over ng-repeat -->
-    	<!-- the scrolling has been a known issue -->
-		<ion-item
-			ng-repeat="event in myEvents | filter:showSearchText | limitTo: feedLimit"
-			class="item item-avatar item-icon-right">
-				<img ng-src="{{event.artists[0].image_url}}">
-				<h3 style="white-space: normal;">{{ event.title }}</h3>
-				<h5>{{ event.datetime | date:shortDate }}</h5>
-				<i class="icon ion-chevron-left button-dark"></i>
-			
-				<ion-option-button class="button-calm" ng-click="learnMore('{{event.ticket_url}}')">
-					Learn More
-				</ion-option-button>
-		</ion-item>
-	</ion-list>
 
-	<div class="list list-inset" ng-if='myEvents.length > feedLimit'>
+<!-- Search -->
+<input type="text" class='form-control' placeholder="search events" ng-model="showSearchText">
+
+<div class='row'>
+	<div ng-repeat="event in myEvents | filter:showSearchText | limitTo: feedLimit" class="col-sm-4 portfolio-item">
+	    <div style='max-height:200px;overflow:hidden;'>
+	        <img class="img-responsive" ng-src="{{event.artists[0].image_url}}" alt="">
+	    </div>
+	    <h3>{{ event.title }}</h3>
+	    <p>Date: {{ event.datetime | date:shortDate }}</p>
+	    <p>Location: {{event.venue.name}}</p>
+
+	    <a ng-href='{{facebook_rsvp_url}}'>Facebook page</a>
+	    <a href ng-click="learnMore('{{event.ticket_url}}')">Buy tickets</a>
+	</div>
+</div>
+   
+<div class='row text-center'>
+	<div class="btn btn-lg btn-primary" ng-if='myEvents.length > feedLimit'>
 		<div class="item" id="showMore"
-		ng-click="increaseFeed()">Show More...</div>
+			ng-click="increaseFeed()">Show More...</div>
 	</div>
 </div>

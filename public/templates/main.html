@@ -1,14 +1,8 @@
-<div class="item item-divider"> 
-    Follow artists
-</div>
 <!-- Filter Search -->
-<input type="text" class='form-control' placeholder="Artist/Genre" ng-model="searchText">
+<input type="text" class='form-control' placeholder="search Artist/Genre" ng-model="searchText">
 
-<b>Showing {{feedLimit}}/{{artists.length}} shows</b>
-
-<ul>
-	
-	<li class="list-group-item" ng-repeat="artist in artists | filter:searchText | limitTo: feedLimit">
+<ul class='list-group'>
+	<li class="list-group-item" ng-repeat="artist in artists | orderBy:['name'] | filter:searchText | limitTo: feedLimit">
 		<img ng-src="{{artist.images[artist.images.length-1].url}}">
 		{{artist.name}}
 		<div class='btn pull-right' 
