@@ -1,8 +1,12 @@
 
-<nav class="navbar navbar-default navbar-fixed-top" ng-controller="LoginCtrl" ng-if='getCurrentUser()'>
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="LoginCtrl">
 	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" ui-sref='home'>ShowJunkie</a>
+		</div>
+		<span ng-if='getCurrentUser()'>
 		<ul class='nav navbar-nav'>
-			<li><a ui-sref="home">Home</a></li>
+			<li><a ui-sref="home">Artists</a></li>
 			<li><a ui-sref="notified">Notified</a></li>
 			<li><a ui-sref="settings">Settings</a></li>
 		</ul>
@@ -12,6 +16,6 @@
 			</li>
 			<li><button class="btn btn-default" ng-click="logout()">Logout</button></li>
 		</ul>
-
+		</span>
 	</div>
 </nav>

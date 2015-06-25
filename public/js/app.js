@@ -61,5 +61,5 @@ app.config(function($stateProvider, $urlRouterProvider){
 			templateUrl: 'templates/settings.html'
 		});
 
-	$urlRouterProvider.otherwise("/login");
+	$urlRouterProvider.otherwise("/register");
 });
