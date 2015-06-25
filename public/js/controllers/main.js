@@ -1,6 +1,6 @@
 
 
-app.controller('MainCtrl', function($scope, $rootScope, Artist, User, Auth, Follows, Notified) {
+app.controller('MainCtrl', function($scope, $rootScope, Artist, User, Auth, Follows, Notified, toaster) {
 
     $scope.artists = Artist.allArtists;
 
@@ -29,7 +29,16 @@ app.controller('MainCtrl', function($scope, $rootScope, Artist, User, Auth, Foll
           // update event count
           Notified.getEventsForArtists(artistUserFollows).then(function(events_for_user){
             $rootScope.myEvents = events_for_user;
+            var old_count = $rootScope.count;
             $rootScope.count = events_for_user.length;
+
+            // toaster pop for new events
+            if(old_count !== 0 && $rootScope.count > old_count){
+              var newEvents = $rootScope.count - old_count;
+              toaster.pop('info', "You have " + newEvents + " more upcoming shows", "");
+
+            }
+
           })
         });
     };

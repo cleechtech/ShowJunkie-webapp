@@ -47,7 +47,8 @@ app.factory('Notified', function(FIREBASE_URL, $firebaseArray, Auth){
 					artists.forEach(function(a){
 						// if the artist is in our follow list, add the event
 						if(typeof(followList[a.name]) !== 'undefined' && followList[a.name]){
-							
+							console.log(e)
+
 							// only add unique events
 							if(events_for_current_user.indexOf(e) === -1){
 								events_for_current_user.push(e);
