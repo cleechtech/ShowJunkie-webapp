@@ -9,7 +9,7 @@
 </div>
 <b>Showing {{feedLimit}}/{{artists.length}} shows</b>
 
-<ul class="list">
+<ul>
 	
 	<li class="list-group-item" ng-repeat="artist in artists | filter:searchText | limitTo: feedLimit">
 		<img ng-src="{{artist.images[artist.images.length-1].url}}">
@@ -17,12 +17,14 @@
 		<div class='btn pull-right' 
 			ng-class='{"btn-info": followingArtists[artist.name], "btn-default":!followingArtists[artist.name]}' 
 			ng-click="updateFollowing(artist.name, $index)">
+			<i ng-if='!followingArtists[artist.name]' class="fa fa-user-plus"></i>
 			{{followingArtists[artist.name] && ("Following") || ("Follow")}}
 		</div>		
-		
 	</li>
-	<div class="list list-inset" ng-if='artists.length > feedLimit'>
+</ul>
+<div class='row text-center'>
+	<div class="btn btn-lg btn-primary" ng-if='artists.length > feedLimit'>
 		<div class="item" id="showMore"
 			ng-click="increaseFeed()">Show More...</div>
 	</div>
-</ul>
+</div>

@@ -1,16 +1,15 @@
 
-<h1>Login</h1>
-		
-<div class="list list-inset">
-	<form ng-submit="login()">
+<div class='text-center row'>
+	<h1>Login</h1>
+	
+	<form class="form-horizontal" ng-submit="login()">
 		<p ng-show='error' style='color:red;'>{{ error }}</p>
-		<label class="item item-input">
-			<input type='email' name='email' id='email' ng-model='user.email' placeholder='email'>
-		</label>
+
+		<label class="control-label">Email</label>
+		<input type='email' name='email' id='email' ng-model='user.email' placeholder='email' class="form-control">
 		<br>
-		<label class="item item-input">
-			<input type='password' ng-model='user.password' placeholder='password'>
-		</label>
+		<label class="control-label">Password</label>
+		<input type='password' ng-model='user.password' placeholder='password' class="form-control">
 		<br>
 		<a ui-sref='resetPassword'>Forgot password?</a> or <a href ui-sref="register">Create an account</a>
 		<br>
