@@ -1,7 +1,10 @@
 
 var app = angular.module('showjunkie', [
 	'ui.router',
-	'firebase'
+	'firebase',
+	'ngAnimate',
+	'ui.bootstrap',
+	'toaster'
 ]);
 
 app.constant('FIREBASE_URL', 'https://showjunkie.firebaseio.com/');
@@ -58,7 +61,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 		})
 		.state('settings', {
 			url: '/settings',
-			templateUrl: 'templates/settings.html'
+			templateUrl: 'templates/settings.html',
+			controller: 'SettingsCtrl'
 		});
 
 	$urlRouterProvider.otherwise("/register");

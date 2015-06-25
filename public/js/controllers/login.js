@@ -1,5 +1,5 @@
 
-app.controller('LoginCtrl', function($scope, Auth, $state, User){
+app.controller('LoginCtrl', function($scope, Auth, $state, User, toaster){
 	$scope.user = {};
 
 	if(Auth.getCurrentUser() !== null){
@@ -67,8 +67,11 @@ app.controller('LoginCtrl', function($scope, Auth, $state, User){
 
 	$scope.resetPassword = function(email){
 		Auth.resetPassword(email).then(function(){
-			alert('reset password sent!');
+			toaster.pop('success', "Your password has been reset", "Check your email");
    			$state.go('login');
+		}, function(){
+			toaster.pop('error', "Something went wrong", "Please try again");
+			$state.go('login');
 		});
 	};
 

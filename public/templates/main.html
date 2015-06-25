@@ -1,7 +1,7 @@
 <!-- Filter Search -->
 <input type="text" class='form-control' placeholder="search Artist/Genre" ng-model="searchText">
 
-<ul class='list-group'>
+<ul class='list-group' style='margin-top:25px;'>
 	<li class="list-group-item" ng-repeat="artist in artists | orderBy:['name'] | filter:searchText | limitTo: feedLimit">
 		<img ng-src="{{artist.images[artist.images.length-1].url}}">
 		{{artist.name}}

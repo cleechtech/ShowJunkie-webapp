@@ -2,7 +2,7 @@
 <!-- Search -->
 <input type="text" class='form-control' placeholder="search events" ng-model="showSearchText">
 
-<div class='row'>
+<div class='row' style='margin-top:25px;'>
 	<div ng-repeat="event in myEvents | filter:showSearchText | limitTo: feedLimit" class="col-sm-4 portfolio-item">
 	    <div style='max-height:200px;overflow:hidden;'>
 	        <img class="img-responsive" ng-src="{{event.artists[0].image_url}}" alt="">

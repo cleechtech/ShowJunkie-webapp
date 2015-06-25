@@ -1,23 +1,16 @@
 <div class="list" style="margin-top:43px;">
 
-	<button class="button button-stable">
-			change password
-	</button>
+    <div>
+    	<h3>change password</h3>
 
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">Old password</span>
-    <input type="password" placeholder="temporary password">
-  </label>
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">new password</span>
-    <input type="password" placeholder="type it once">
-  </label>
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">confirm new password</span>
-    <input type="password" placeholder="type it again">
-  </label>
+        <label>Old password</label>
+        <input type="password" class='form-control' placeholder="temporary password" ng-model='oldPassword'>
 
-    <button class="button button-calm">
-			Submit
-	</button>
+        <label>New password</label>
+        <input type="password" class='form-control' placeholder="temporary password" ng-model='newPassword'>
+
+        <button class="btn btn-primary" ng-click='changePassword(oldPassword, newPassword)'>
+    			Submit
+    	</button>
+    </div>
 </div>
