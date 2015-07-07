@@ -31,4 +31,4 @@ app.controller('RequestArtistCtrl', function($scope, $http){
 		});
 		
 	};
-})
+});

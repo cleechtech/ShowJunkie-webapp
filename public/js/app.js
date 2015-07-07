@@ -25,9 +25,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/artists.html',
             controller: 'ShowArtists'
         })
+        .state('events', {
+            url: '/events',
+            templateUrl: 'templates/events.html',
+            controller: 'EventsCtrl'
+        })
         .state('addArtist', {
-            url: '/artists/add',
+            url: '/artists/request',
             templateUrl: 'templates/requestArtist.html',
             controller: 'RequestArtistCtrl'
-        });;
+        })
+        .state('addEvent', {
+            url: '/events/request',
+            templateUrl: 'templates/requestEvent.html',
+            controller: 'RequestEventCtrl'
+        });
 });

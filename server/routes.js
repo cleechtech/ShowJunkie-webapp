@@ -110,8 +110,24 @@ module.exports = function(app, passport){
     	// send an email to myself about the artist request
         sendEmail({
           	to: 'connorleech@gmail.com',
-        	subject: 'SHOWJUNKIE request: ' + artist_requested,
+        	subject: 'artist request: ' + artist_requested,
         	html: 'Requested by: ' + requesting_user + '<br><br><br><hr>' + 'Full request: ' + req.query.requestedArtist
+        }, function(data){
+        	res.send({message: 'Thank you for your request'});
+        });
+        
+    });
+
+    // events request
+    app.get('/events/request', function(req, res){
+    	var event_requested = req.query.requestedEvent;
+    	var requesting_user = req.query.user;
+
+    	// send an email to myself about the event request
+        sendEmail({
+          	to: 'connorleech@gmail.com',
+        	subject: 'event request: ' + event_requested,
+        	html: 'Requested by: ' + requesting_user + '<br><br><br><hr>' + 'Full request: ' + event_requested
         }, function(data){
         	res.send({message: 'Thank you for your request'});
         });
