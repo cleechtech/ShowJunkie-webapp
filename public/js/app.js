@@ -22,6 +22,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('artists', {
             url: '/artists',
-            templateUrl: 'templates/artists.html'
-        });
+            templateUrl: 'templates/artists.html',
+            controller: 'ShowArtists'
+        })
+        .state('addArtist', {
+            url: '/artists/add',
+            templateUrl: 'templates/addArtist.html',
+            controller: 'RequestArtistCtrl'
+        });;
 });

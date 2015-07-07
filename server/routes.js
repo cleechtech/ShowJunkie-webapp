@@ -1,6 +1,7 @@
 var express = require('express'),
 	path = require('path'),
 	User = require('./models/user'),
+	sendEmail = require('./email/sendEmail'),
 	rootPath = path.normalize(__dirname + '/../'),
 	apiRouter = express.Router();
 
@@ -101,7 +102,33 @@ module.exports = function(app, passport){
         });
     });
 
-	app.use('/api', apiRouter);	// haven't built any api yet
+    // artist request
+    app.get('/artists/request', function(req, res){
+    	var artist_requested = req.query.requestedArtist;
+    	var requesting_user = req.query.user;
+
+    	// send an email to myself about the artist request
+        sendEmail({
+          	to: 'connorleech@gmail.com',
+        	subject: 'SHOWJUNKIE request: ' + artist_requested,
+        	html: 'Requested by: ' + JSON.stringify(requesting_user)
+        }, function(data){
+        	console.log(data);
+        	res.send({message: 'Thank you for your request'});
+        });
+        
+    });
+
+	// follow an artist
+	apiRouter.put('/artists/:artistId', function(req, res){
+		var user_id = req.query.userId;
+		var artist_id = req.params.artistId;
+
+		User.findOne({_id: user_id }, function(err, user){
+			user.following.push(artist_id);
+		});
+	});
+	app.use('/api', apiRouter);
 };
 
 function isLoggedIn(req, res, next){

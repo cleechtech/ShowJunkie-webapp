@@ -23,7 +23,7 @@ var userSchema = mongoose.Schema({
         token: String,
         name: String
     },
-    following: [mongoose.Schema.ObjectId]
+    following: [{ type : mongoose.Schema.ObjectId, ref : 'Artist' }]
 });
 
 // generating a hash

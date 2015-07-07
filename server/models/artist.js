@@ -5,7 +5,7 @@ var User = require('./user');
 var artistSchema = mongoose.Schema({
 
     name: String,
-    followers: [mongoose.Schema.ObjectId],
+    followers: [{ type : mongoose.Schema.ObjectId, ref : 'User' }],
     images: [String]
 
 });
