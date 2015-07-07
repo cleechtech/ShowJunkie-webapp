@@ -16,12 +16,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     // Application routes
     $stateProvider
-        .state('index', {
+        .state('dashboard', {
             url: '/',
             templateUrl: 'templates/dashboard.html'
         })
-        .state('tables', {
-            url: '/tables',
-            templateUrl: 'templates/tables.html'
+        .state('artists', {
+            url: '/artists',
+            templateUrl: 'templates/artists.html'
         });
 });

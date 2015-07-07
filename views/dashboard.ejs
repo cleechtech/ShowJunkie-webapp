@@ -42,16 +42,47 @@
       <ul class="sidebar">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()">
-            Dashboard
+            <span class="fa fa-headphones"></span>
+            ShowJunkie
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
         <li class="sidebar-title"><span>NAVIGATION</span></li>
         <li class="sidebar-list">
-          <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+          <a href ui-sref="dashboard">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
+          <a href ui-sref="artists">Artists <span class="menu-icon fa fa-music"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">Events <span class="menu-icon fa fa-fire-extinguisher"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">Help <span class="menu-icon fa fa-ambulance"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="photos">Photos <span class="menu-icon fa fa-camera-retro"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">Popular <span class="menu-icon fa fa-signal"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">Space shuttle <span class="menu-icon fa fa-space-shuttle"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">News <span class="menu-icon fa fa-newspaper-o"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="artists">Share <span class="menu-icon fa fa-heart"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="artists">Blang blang <span class="menu-icon fa fa-diamond"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="artists">Transport <span class="menu-icon fa fa-motorcycle"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="artists">Bed <span class="menu-icon fa fa-bed"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -87,11 +118,11 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" dropdown-menu>
                   <li class="dropdown-header">
-                    Joe Bloggs
+                    {{CURR_USER.local.email || CURR_USER.facebook.email || CURR_USER.spotify.email}}
                   </li>
                   <li class="divider"></li>
                   <li class="link">
-                    <a href="#">
+                    <a href="/profile">
                       Profile
                     </a>
                   </li>
@@ -107,23 +138,25 @@
                   </li>
                   <li class="divider"></li>
                   <li class="link">
-                    <a href="#">
+                    <a href="/logout">
                       Logout
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="item dropdown">
-               <a href="#" class="dropdown-toggle">
+              <div class="item dropdown" dropdown>
+               <a href="#" class="dropdown-toggle" dropdown-toggle>
                   <i class="fa fa-bell-o"></i>
+                  <!-- if not new notifications fa-bell-slash-o -->
+                  <!-- notification counter: http://stackoverflow.com/a/15349089/2031033 -->
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right">
+                <ul class="dropdown-menu dropdown-menu-right" dropdown-menu>
                   <li class="dropdown-header">
                     Notifications
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="#">Server Down!</a>
+                    <a href="#">This is a notification</a>
                   </li>
                 </ul>
               </div>
