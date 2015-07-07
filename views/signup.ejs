@@ -1,7 +1,7 @@
 <% layout('layout') -%>
 
-<div class='col-sm-6 col-sm-offset-3'>
-	<h1>Signup</h1>
+<div class='col-sm-4 col-sm-offset-4'>
+	<h3>Signup with email</h3>
 
 	<% if (message.length > 0) { %>
 		<div class='alert alert-danger'>
@@ -11,11 +11,9 @@
 
 	<form action='/signup' method='POST'>
 		<div class='form-group'>
-			<label>Email</label>
 			<input type='email' class='form-control' name='email' placeholder='Email'>
 		</div>
 		<div class='form-group'>
-			<label>Password</label>
 			<input type='password' class='form-control' name='password' placeholder='Password'>
 		</div>
 		<!--
@@ -25,12 +23,16 @@
 		</div>
 		-->
 
-		<button type='submit' class='btn btn-warning btn-lg'>Signup</button>
+		<button type='submit' class='btn btn-warning btn-lg'>Create account</button>
 	</form>
 
 	<hr>
 
-	<p> or <a href='/login'>Login</a></p>
-	<p> or <a href='/'>Home</a></p>
+	<a class='btn btn-default' href='/'>
+		<i class='fa fa-arrow-left'></i> 
+		Back
+	</a>
+	<a class='btn btn-info' href='/login'>Login</a>
+	
 
 </div>
