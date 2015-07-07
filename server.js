@@ -26,6 +26,8 @@ app.use(session({ secret: 'thisisverys3crett', cookie: { maxAge: 60000 }, resave
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./server/models/artist');
+
 // ROUTES
 require('./server/routes')(app);
 
