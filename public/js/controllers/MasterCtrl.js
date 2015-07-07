@@ -3,7 +3,6 @@
  */
 
 app.controller('MasterCtrl', function($scope, $cookieStore, CURR_USER) {
-    console.log(CURR_USER);
     
     $scope.CURR_USER = CURR_USER;
 

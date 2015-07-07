@@ -1,4 +1,8 @@
 app.factory('Artist', function($http){
 
-	return {};
+	return {
+		add: function(artist){
+			
+		}
+	};
 });

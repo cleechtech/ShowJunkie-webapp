@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+var Artist = require('./artist');
 
 // user model schema
 var userSchema = mongoose.Schema({
@@ -21,7 +22,8 @@ var userSchema = mongoose.Schema({
         email: String,
         token: String,
         name: String
-    }
+    },
+    following: [mongoose.Schema.ObjectId]
 });
 
 // generating a hash
