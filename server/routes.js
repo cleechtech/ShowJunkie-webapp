@@ -111,9 +111,8 @@ module.exports = function(app, passport){
         sendEmail({
           	to: 'connorleech@gmail.com',
         	subject: 'SHOWJUNKIE request: ' + artist_requested,
-        	html: 'Requested by: ' + JSON.stringify(requesting_user)
+        	html: 'Requested by: ' + requesting_user + '<br><br><br><hr>' + 'Full request: ' + req.query.requestedArtist
         }, function(data){
-        	console.log(data);
         	res.send({message: 'Thank you for your request'});
         });
         

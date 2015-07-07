@@ -10,7 +10,14 @@ app.controller('ShowArtists', function($scope, Artist){
 
 
 app.controller('RequestArtistCtrl', function($scope, $http){
+	$scope.requestArtist = {};
+
 	$scope.requestArtist = function(){
+		if($scope.requestedArtist.name === '' || typeof($scope.requestedArtist.name) === 'undefined'){
+			alert("We at least need a name for who you want to add!");
+			return;
+		}
+
 		$http({
 			url: '/artists/request',
 			type: 'GET',
@@ -19,8 +26,8 @@ app.controller('RequestArtistCtrl', function($scope, $http){
 				requestedArtist: $scope.requestedArtist
 			}
 		}).then(function(){
-			alert('Thanks for request coverage of ' + $scope.requestedArtist + '! We will look into it');
-			$scope.requestedArtist = '';
+			alert('Thanks for request coverage of ' + $scope.requestedArtist.name + '! We will look into it');
+			$scope.requestedArtist = {};
 		});
 		
 	};

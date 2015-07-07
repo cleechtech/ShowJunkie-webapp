@@ -18,7 +18,7 @@ var sendEmail = function(mailObject, cb){
         html: mailObject.html
     }, function(err, info) {
       if (err) {
-        console.error(err);
+        cb(null, err);
       } else {
         cb(info);
       }
