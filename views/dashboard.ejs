@@ -27,6 +27,12 @@
   <script type="text/javascript" src="js/directives/rdWidgetBody.js"></script>
   <script type="text/javascript" src="js/directives/rdWidgetFooter.js"></script>
   <script type="text/javascript" src="js/directives/rdWidgetHeader.js"></script>
+  <script type='text/javascript'>
+    var current_user = <%- JSON.stringify(user) %>;
+
+    // can inject current user anywhere
+    app.constant('CURR_USER', current_user);
+  </script>
 </head>
 <body ng-controller="MasterCtrl">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>

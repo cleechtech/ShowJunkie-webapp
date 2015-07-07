@@ -2,7 +2,9 @@
  * Master Controller
  */
 
-app.controller('MasterCtrl', function($scope, $cookieStore) {
+app.controller('MasterCtrl', function($scope, $cookieStore, CURR_USER) {
+    console.log(CURR_USER);
+    
     /**
      * Sidebar Toggle & Cookie Control
      */

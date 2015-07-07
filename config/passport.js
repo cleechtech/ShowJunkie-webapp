@@ -182,8 +182,6 @@ module.exports = function(passport) {
 
                         } else {
                             // associate facebook credentials with the spotify creds
-                            var user = req.user;
-
                             user.facebook.id = profile.id;
                             user.facebook.token = token;
                             user.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;

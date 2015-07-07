@@ -5,6 +5,10 @@ var app = angular.module('ShowJunkie', [
 	'ngCookies'
 ]);
 
+// app.run(function(){
+//     console.log(user);
+// })
+
 app.config(function($stateProvider, $urlRouterProvider) {
 
     // For unmatched routes
