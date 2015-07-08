@@ -1,6 +1,8 @@
 <div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
   <div class="col-xs-12">
+    <!--
     <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    -->
   </div>
 </div>
 
@@ -11,7 +13,7 @@
 				<div class="widget-icon green pull-left">
 					<i class="fa fa-users"></i>
 				</div>
-				<div class="title">80</div>
+				<div class="title">{{usersCount || 0}}</div>
 				<div class="comment">Users</div>
 			</rd-widget-body>
 		</rd-widget>
@@ -20,10 +22,10 @@
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon red pull-left">
-					<i class="fa fa-tasks"></i>
+					<i class="fa fa-music"></i>
 				</div>
-				<div class="title">16</div>
-				<div class="comment">Servers</div>
+				<div class="title">{{artistCount || 0}}</div>
+				<div class="comment">Artists</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
@@ -31,10 +33,10 @@
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon orange pull-left">
-					<i class="fa fa-sitemap"></i>
+					<i class="fa fa-fire-extinguisher"></i>
 				</div>
-				<div class="title">225</div>
-				<div class="comment">Documents</div>
+				<div class="title">{{eventCount || 0}}</div>
+				<div class="comment">Events</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
@@ -42,10 +44,10 @@
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon blue pull-left">
-					<i class="fa fa-support"></i>
+					<i class="fa fa-space-shuttle"></i>
 				</div>
-				<div class="title">62</div>
-				<div class="comment">Tickets</div>
+				<div class="title">{{points || 0}}</div>
+				<div class="comment">Points</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
@@ -54,14 +56,22 @@
 <div class="row">
 	<div class="col-lg-6">
 		<rd-widget>
-      		<rd-widget-header icon="fa-tasks" title="Servers">
-				<a href="#">Manage</a>
+      		<rd-widget-header icon="fa-music" title="Artists you follow">
+      			<button class="btn btn-sm btn-info">Search Artists</button>
       		</rd-widget-header>
       		<rd-widget-body classes="medium no-padding">
 				<div class="table-responsive">
 					<table class="table">
 						<tbody>
-							<tr><td>RDVMPC001</td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+							<tr>
+								<td>Artist name</td>
+								<td>Follower count</td>
+								<td>
+									<span class="text-success">
+										<i class="fa fa-check"></i>
+									</span>
+								</td>
+							</tr>
 							<tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
 							<tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
 							<tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
@@ -80,17 +90,27 @@
 	</div>
 	<div class="col-lg-6">
 		<rd-widget>
-			<rd-widget-header icon="fa-users" title="Users">
-				<input type="text" placeholder="Search" class="form-control input-sm" />
+			<rd-widget-header icon="fa-fire-extinguisher" title="Upcoming Events">
+				<button class="btn btn-sm btn-info">View Events</button>
 			</rd-widget-header>
 			<rd-widget-body classes="medium no-padding">
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
-							<tr><th class="text-center">ID</th><th>Username</th><th>Role</th><th>Account</th></tr>
+							<tr>
+								<th class="text-center">Title</th>
+								<th>Location</th>
+								<th>Date</th>
+								<th>Price</th>
+							</tr>
 						</thead>
 						<tbody>
-							<tr><td class="text-center">1</td><td>Joe Bloggs</td><td>Super Admin</td><td>AZ23045</td></tr>
+							<tr>
+								<td class="text-center">Outside Lands</td>
+								<td>San Francisco, CA</td>
+								<td>Aug 7, 2015</td>
+								<td>$45</td>
+							</tr>
 							<tr><td class="text-center">2</td><td>Timothy Hernandez</td><td>Admin</td><td>AU24783</td></tr>
 							<tr><td class="text-center">3</td><td>Joe Bickham</td><td>User</td><td>AM23781</td></tr>
 						</tbody>
@@ -104,8 +124,8 @@
 <div class="row">
 	<div class="col-lg-6">
    		<rd-widget>
-   			<rd-widget-header icon="fa-plus" title="Extras">
-   				<button class="btn btn-sm btn-info">Button</button>
+   			<rd-widget-header icon="fa-users" title="Friends on ShowJunkie">
+   				<button class="btn btn-sm btn-info">Invite Friends</button>
    			</rd-widget-header>
    			<rd-widget-body>
 				<div class="message">

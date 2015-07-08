@@ -26,6 +26,7 @@
   <script type="text/javascript" src="js/app.js"></script>
   <script type="text/javascript" src='js/services/artist.js'></script>
   <script type="text/javascript" src="js/controllers/MasterCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/DashboardCtrl.js"></script>
   <script type="text/javascript" src="js/controllers/AlertsCtrl.js"></script>
   <script type="text/javascript" src="js/controllers/ShowArtistsCtrl.js"></script>
   <script type="text/javascript" src="js/controllers/EventsCtrl.js"></script>
@@ -64,33 +65,6 @@
         </li>
         <li class="sidebar-list">
           <a href ui-sref="events">Events <span class="menu-icon fa fa-fire-extinguisher"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="events">Help <span class="menu-icon fa fa-ambulance"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="photos">Photos <span class="menu-icon fa fa-camera-retro"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="events">Popular <span class="menu-icon fa fa-signal"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="events">Space shuttle <span class="menu-icon fa fa-space-shuttle"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="events">News <span class="menu-icon fa fa-newspaper-o"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="artists">Share <span class="menu-icon fa fa-heart"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="artists">Blang blang <span class="menu-icon fa fa-diamond"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="artists">Transport <span class="menu-icon fa fa-motorcycle"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a href ui-sref="artists">Bed <span class="menu-icon fa fa-bed"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -154,8 +128,8 @@
               </div>
               <div class="item dropdown" dropdown>
                <a href="#" class="dropdown-toggle" dropdown-toggle>
-                  <i class="fa fa-bell-o"></i>
-                  <!-- if not new notifications fa-bell-slash-o -->
+                  <i class="fa fa-bell-slash-o"></i>
+                  <!-- if new notifications fa-bell-o -->
                   <!-- notification counter: http://stackoverflow.com/a/15349089/2031033 -->
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" dropdown-menu>
@@ -164,7 +138,7 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="#">This is a notification</a>
+                    <a href="#">Black Keys are coming to town</a>
                   </li>
                 </ul>
               </div>

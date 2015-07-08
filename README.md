@@ -1,6 +1,11 @@
 mean-starter
 =====
 
+#### Notes
+
+- music recommendation API: http://www.tastekid.com/read/api
+
+
 #### Getting started
 ```
 $ git clone <this_repo>
