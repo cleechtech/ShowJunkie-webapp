@@ -3,13 +3,13 @@ var env = process.env.NODE_ENV || 'development',
 
 module.exports ={
 	"facebookAuth": {
-		"clientID": "1410203245974944",
-		"clientSecret": "8b16bad23626ded12e58b8c0aef4f2f6",
+		"clientID": "958743297517139",
+		"clientSecret": "0af3d3f155a8a1d4411c95c0b2dc683e",
 		"callbackURL": envConfig.baseUrl + "/auth/facebook/callback"
 	},
 	"spotifyAuth": {
-		"clientID": "8bf6626d6a0d46d5b825d1904a9944c9",
-		"clientSecret": "171820e9114e4c4989ee59735370866b",
+		"clientID": "e8ed9aacf23b48e088d27ba4945f6e4e",
+		"clientSecret": "8af11cc93e30441c9807ae9419007ecf",
 		"callbackURL": envConfig.baseUrl + "/auth/spotify/callback"
 	}
 };
