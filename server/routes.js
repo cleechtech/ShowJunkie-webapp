@@ -1,6 +1,7 @@
 var express = require('express'),
 	path = require('path'),
 	User = require('./models/user'),
+	Artist = require('./models/artist'),
 	sendEmail = require('./email/sendEmail'),
 	rootPath = path.normalize(__dirname + '/../'),
 	apiRouter = express.Router();
@@ -32,7 +33,8 @@ module.exports = function(app, passport){
 	});
 
 	// admin homepage
-	app.get('/admin', isAdmin, function(req, res){
+	//  isAdmin,
+	app.get('/admin', function(req, res){
 		res.render('admin/index.ejs');
 	});
 
@@ -134,6 +136,12 @@ module.exports = function(app, passport){
         
     });
 
+    // add an artist
+    apiRouter.post('/artists/add', function(){
+    	var newArtist = req.params;
+    	Artist
+    });
+
 	// follow an artist
 	apiRouter.put('/artists/:artistId', function(req, res){
 		var user_id = req.query.userId;
@@ -146,6 +154,7 @@ module.exports = function(app, passport){
 	app.use('/api', apiRouter);
 };
 
+// Middleware
 function isLoggedIn(req, res, next){
 
 	if (req.isAuthenticated()){
@@ -168,6 +177,6 @@ function isAdmin(req, res, next){
 	if(req.isAuthenticated() && email === 'connorleech@gmail.com'){
 		next();
 	} else {
-		res.send('Error not authorized. Go home');
+		res.send('Error not authorized. Go <a href="/">home</a>');
 	}
 }

@@ -3,14 +3,64 @@
 
 <div class='row'>
 	<div class='col-sm-6'>
-		<h3>Add artist</h3>
+		<h3>Search spotify</h3>
+		<div class="input-group">
+			<input type='text' placeholder='Enter artist name' class='form-control' ng-model='search'>
+			<div class="input-group-addon" ng-click='requestSpotify(search)'>
+				<i class='fa fa-search'></i>
+			</div>
+		</div>
+		<p ng-if='searchResults'>
+			<b>{{searchResults.total}} Results found</b>
+		</p>
 
-		<input type='text' placeholder='Name' class='form-control'>
+		<div class="list-group">
+
+			<div class="list-group-item" ng-repeat='artist in searchResults.items'>
+				<div class='row'>
+				<div class='col-sm-3'>
+		        	<img ng-src='{{artist.images[0].url}}' width='100px'>
+		        </div>
+		        <div class='col-sm-6'>
+			        <h4 class="list-group-item-heading">
+			        	{{artist.name}}
+			        	<small>
+			        		<a ng-href='{{artist.href}}'>View site</a>
+			        	</small>
+			        </h4>
+			        <p class="list-group-item-text">
+			        	<p>Popularity: {{artist.popularity}}</p>
+			        	<p>Spotify Followers: {{artist.followers.total}}</p>
+			        </p>
+		        </div>
+		        <div class='col-sm-2'>
+			        <small class='btn btn-default'>Populate</small>
+		        </div>
+		        </div>
+		    </div>
+		</div>
+
+		<pre>{{searchResults.items | json}}</pre>
+
 	</div>
 	<div class='col-sm-6'>
-		<h3>Add event</h3>
+		<h3>Add Artist</h3>
+		<form method='post' action='/api/artists/add'>
+			<input type='text' placeholder='Name' class='form-control' ng-model='artist.name'>
 
-		<input type='text' placeholder='Title' class='form-control'>
+			
+
+			<br>
+			<hr>
+			<h5>Artist preview</h5>
+
+			<pre>{{artist | json}}</pre>
+
+			<hr>
+			<br>
+			
+			<input type='submit' value='Add artist' class='btn btn-success'>
+		</form>
 	</div>
 </div>
 
