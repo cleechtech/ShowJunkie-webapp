@@ -6,7 +6,8 @@ var artistSchema = mongoose.Schema({
 
     name: String,
     followers: [{ type : mongoose.Schema.ObjectId, ref : 'User' }],
-    images: [String]
+    images: [String],
+    spotifyId: String
 
 });
 

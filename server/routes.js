@@ -35,7 +35,7 @@ module.exports = function(app, passport){
 	// admin homepage
 	//  isAdmin,
 	app.get('/admin', function(req, res){
-		res.render('admin/index.ejs');
+		res.render('admin/layout.ejs');
 	});
 
 

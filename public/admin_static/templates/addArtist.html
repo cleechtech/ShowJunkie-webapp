@@ -1,5 +1,3 @@
-<% layout('admin/layout') -%>
-
 
 <div class='row'>
 	<div class='col-sm-6'>
@@ -34,21 +32,18 @@
 			        </p>
 		        </div>
 		        <div class='col-sm-2'>
-			        <small class='btn btn-default'>Populate</small>
+			        <small class='btn btn-default' ng-click='populateFields(artist)'>Populate</small>
 		        </div>
 		        </div>
 		    </div>
 		</div>
-
-		<pre>{{searchResults.items | json}}</pre>
-
 	</div>
 	<div class='col-sm-6'>
 		<h3>Add Artist</h3>
 		<form method='post' action='/api/artists/add'>
 			<input type='text' placeholder='Name' class='form-control' ng-model='artist.name'>
 
-			
+			<input type='text' placeholder='Image URL' class='form-control' ng-model='artist.images[0]'>
 
 			<br>
 			<hr>

@@ -19,13 +19,30 @@
 	</style>
 
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 	<script type="text/javascript" src='admin_static/js/app.js'></script>
 </head>
 <body ng-app='ShowJunkie.admin'>
 	<div class='container' ng-controller='AdminCtrl'>
-		<%- body -%>
+		<ul class="nav nav-tabs">
+		  <li role="presentation" ng-class="{ active: isActive('addArtist') }">
+		  	<a ui-sref="addArtist">Add artist</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('addEvent') }">
+		  	<a ui-sref="addEvent">Add event</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('artists') }">
+		  	<a ui-sref="artists">Artists</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('events') }">
+		  	<a ui-sref="events">Events</a>
+		  </li>
+		</ul>
+
+		<!-- angular templates render here -->
+		<ui-view></ui-view>
 	</div>
 </body>
 </html>
