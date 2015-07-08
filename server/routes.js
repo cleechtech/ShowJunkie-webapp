@@ -17,12 +17,6 @@ module.exports = function(app, passport){
 		res.render('signup.ejs', { message: req.flash('signupMessage') });
 	});
 
-	app.get('/profile', isLoggedIn, function(req, res){
-		res.render('profile.ejs', {
-			user: req.user	// get user from session, pass to template
-		});
-	});
-
 	app.get('/logout', function(req, res){
 		req.logout();
 		res.redirect('/');
@@ -36,6 +30,12 @@ module.exports = function(app, passport){
 		});
 
 	});
+
+	// admin homepage
+	app.get('/admin', isAdmin, function(req, res){
+		res.render('admin/index.ejs');
+	});
+
 
 	// local posts
 	app.post('/login', passport.authenticate('local-login', {
@@ -149,10 +149,25 @@ module.exports = function(app, passport){
 function isLoggedIn(req, res, next){
 
 	if (req.isAuthenticated()){
-		return res.render('dashboard.ejs', {
+		res.render('dashboard.ejs', {
 			user: req.user
 		});
 	} else {
-		return res.render('index.ejs');
+		res.render('index.ejs');
+	}
+}
+
+function isAdmin(req, res, next){
+	if(typeof req.user === 'undefined'){
+		res.send('Go to <a href="/">homepage</a> and login');
+		return;
+	}
+
+	var email = req.user.local.email || req.user.facebook.email || req.user.spotify.email;
+
+	if(req.isAuthenticated() && email === 'connorleech@gmail.com'){
+		next();
+	} else {
+		res.send('Error not authorized. Go home');
 	}
 }

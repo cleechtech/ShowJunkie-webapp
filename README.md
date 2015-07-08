@@ -14,9 +14,6 @@ $ node server
 ```
 
 ### Deploy to heroku
-We don't use MongoDB at the moment, add it anyway.
-
-![thanks Taylor](http://media.giphy.com/media/DvXQYuGWQ34v6/giphy.gif)
 
 ```
 $ heroku create showjunkie
