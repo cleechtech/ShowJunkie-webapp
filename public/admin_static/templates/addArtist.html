@@ -41,9 +41,9 @@
 	<div class='col-sm-6'>
 		<h3>Add Artist</h3>
 		<form method='post' action='/api/artists/add'>
-			<input type='text' placeholder='Name' class='form-control' ng-model='artist.name'>
+			<input type='text' placeholder='Name' class='form-control' ng-model='artist.name' name='name'>
 
-			<input type='text' placeholder='Image URL' class='form-control' ng-model='artist.images[0]'>
+			<input type='text' placeholder='Image URL' class='form-control' ng-model='artist.images[0]' name='image'>
 
 			<br>
 			<hr>

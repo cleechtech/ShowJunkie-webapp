@@ -137,9 +137,23 @@ module.exports = function(app, passport){
     });
 
     // add an artist
-    apiRouter.post('/artists/add', function(){
-    	var newArtist = req.params;
-    	Artist
+    apiRouter.post('/artists/add', function(req, res){
+    	var newArtist = new Artist();
+    	console.log(req.body);
+    	newArtist.name = req.body.name;
+    	newArtist.images.push(req.body.image);
+
+    	newArtist.save(function(a, b){
+    		res.redirect('/admin');
+    	})
+    });
+
+    // get all artists
+    apiRouter.get('/artists', function(req, res){
+    	Artist.find({}).exec(function(err, artists){
+    		console.log(artists);
+    		res.send(artists);
+    	});
     });
 
 	// follow an artist

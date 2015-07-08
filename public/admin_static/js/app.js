@@ -55,8 +55,12 @@ adminApp.controller('AddArtistCtrl', function($scope, Spotify){
 	};
 
 	$scope.populateFields = function(artistObj){
+
+		// if they have an image set it
+		var artistImage = (typeof artistObj.images[0] === 'undefined')? '': artistObj.images[0].url;
+
 		$scope.artist.name = artistObj.name;
-		$scope.artist.images.push(artistObj.images[0].url);
+		$scope.artist.images.push(artistImage);
 		$scope.artist.spotifyId = artistObj.id;
 	};
 });
@@ -66,8 +70,11 @@ adminApp.controller('AddEventCtrl', function($scope){
 });
 
 // view artists controller
-adminApp.controller('ArtistsCtrl', function($scope){
+adminApp.controller('ArtistsCtrl', function($scope, Artist){
 
+	Artist.getAll().then(function(artists){
+		$scope.artists = artists;
+	})
 });
 
 // view events controller
@@ -89,6 +96,19 @@ adminApp.service('Spotify', function($http){
 			}).then(function(res){
 				return res.data.artists;
 			})
+		}
+	};
+});
+
+adminApp.service('Artist', function($http){
+	return {
+		getAll: function(){
+			return $http({
+				method: 'get',
+				url: '/api/artists'
+			}).then(function(res){
+				return res.data;
+			});
 		}
 	};
 });

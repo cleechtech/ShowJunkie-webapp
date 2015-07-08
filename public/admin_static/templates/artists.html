@@ -1,1 +1,10 @@
-Look at all the artists
+<div class='row'>
+	<h3>Artists</h3>
+
+	<div class='col-md-3' ng-repeat='artist in artists'>
+		<img ng-src='{{artist.images[0]}}' class='img-responsive' width='100px'>
+		<h3>{{artist.name}}</h3>
+		<p>Followers: {{artist.followers.length}}</p>
+	</div>
+
+</div>
