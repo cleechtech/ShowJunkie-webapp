@@ -166,6 +166,11 @@ module.exports = function(app, passport){
 		});
 	});
 	app.use('/api', apiRouter);
+
+	// search events
+	apiRouter.get('/events', function(){
+
+	});
 };
 
 // Middleware

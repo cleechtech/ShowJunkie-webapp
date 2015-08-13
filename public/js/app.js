@@ -2,7 +2,8 @@
 var app = angular.module('ShowJunkie', [
 	'ui.router',
 	'ui.bootstrap',
-	'ngCookies'
+	'ngCookies',
+    'uiGmapgoogle-maps'
 ]);
 
 // app.run(function(){
@@ -29,6 +30,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/events',
             templateUrl: 'templates/events.html',
             controller: 'EventsCtrl'
+        })
+        .state('venues', {
+            url: '/venues',
+            templateUrl: 'templates/venues.html',
+            controller: 'VenuesCtrl'
         })
         .state('addArtist', {
             url: '/artists/request',
