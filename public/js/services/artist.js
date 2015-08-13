@@ -1,11 +1,18 @@
-app.factory('Artist', function(FIREBASE_URL, $firebaseArray, $http){
-	var ref = new Firebase(FIREBASE_URL + 'artists');
-	var artists = $firebaseArray(ref);
+app.factory('Artist', function($http, CURR_USER){
 
 	return {
-		allArtists: artists,
-		get: function(id){
-			return artists.$getRecord(id);
+		follow: function(artistId){
+			console.log('follow artist factory')
+			return $http({
+				method: 'PUT',
+				url: '/api/artists/' + artistId,
+				params: {
+					userId: CURR_USER._id
+				}
+			}).then(function(res){
+				console.log(res)
+				return res.data;
+			});
 		}
 	};
 });

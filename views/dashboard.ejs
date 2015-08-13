@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" ng-app="ShowJunkie">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ShowJunkie</title>
+  <!-- STYLES -->
+  <!-- build:css lib/css/main.min.css -->
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/rdash-ui/dist/css/rdash.min.css">
+  <!-- endbuild -->
+
+  <!-- Custom CSS -->
+  <link rel='stylesheet' type='text/css' href='css/main.css'>
+
+  <!-- SCRIPTS -->
+  <!-- build:js lib/js/main.min.js -->
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- endbuild -->
+  <!-- Custom Scripts -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src='js/services/artist.js'></script>
+  <script type="text/javascript" src="js/controllers/MasterCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/DashboardCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/AlertsCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/ShowArtistsCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/EventsCtrl.js"></script>
+
+  <script type="text/javascript" src="js/directives/rdLoading.js"></script>
+  <script type="text/javascript" src="js/directives/rdWidget.js"></script>
+  <script type="text/javascript" src="js/directives/rdWidgetBody.js"></script>
+  <script type="text/javascript" src="js/directives/rdWidgetFooter.js"></script>
+  <script type="text/javascript" src="js/directives/rdWidgetHeader.js"></script>
+  <script type='text/javascript'>
+    var current_user = <%- JSON.stringify(user) %>;
+
+    // can inject current user anywhere
+    app.constant('CURR_USER', current_user);
+  </script>
+</head>
+<body ng-controller="MasterCtrl">
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a ng-click="toggleSidebar()">
+            <span class="fa fa-headphones"></span>
+            ShowJunkie
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        <li class="sidebar-list">
+          <a href ui-sref="dashboard">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="artists">Your Artists <span class="menu-icon fa fa-music"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href ui-sref="events">Upcoming Shows <span class="menu-icon fa fa-fire-extinguisher"></span></a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="https://github.com/rdash/rdash-angular" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="https://github.com/rdash/rdash-angular/README.md" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#">
+            Support
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- End Sidebar -->
+
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="user pull-right">
+              <div class="item dropdown" dropdown>
+                <a href="#" class="dropdown-toggle" dropdown-toggle>
+                  <img src="img/avatar.jpg">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" dropdown-menu>
+                  <li class="dropdown-header">
+                    {{CURR_USER.local.email || CURR_USER.facebook.email || CURR_USER.spotify.email}}
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="/profile">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="link">
+                    <a href="#">
+                      Menu Item
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="/logout">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="item dropdown" dropdown>
+               <a href="#" class="dropdown-toggle" dropdown-toggle>
+                  <i class="fa fa-bell-slash-o"></i>
+                  <!-- if new notifications fa-bell-o -->
+                  <!-- notification counter: http://stackoverflow.com/a/15349089/2031033 -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" dropdown-menu>
+                  <li class="dropdown-header">
+                    Notifications
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Black Keys are coming to town</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="page">
+                Dashboard
+              </div>
+              <div class="breadcrumb-links">
+                Home / Dashboard
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
+</body>
+</html>

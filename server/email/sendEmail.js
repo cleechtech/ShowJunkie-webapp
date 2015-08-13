@@ -10,17 +10,17 @@ var transport = nodemailer.createTransport(mandrillTransport({
   }
 }));
 
-var sendEmail = function(mailObject){
+var sendEmail = function(mailObject, cb){
     transport.sendMail({
-        from: 'claydshaw@gmail.com',
+        from: 'showjunkie@gmail.com',
         to: mailObject.to,
         subject: mailObject.subject,
         html: mailObject.html
     }, function(err, info) {
       if (err) {
-        console.error(err);
+        cb(null, err);
       } else {
-        console.log(info);
+        cb(info);
       }
     });
 };
