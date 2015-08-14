@@ -5,26 +5,37 @@ var adminApp = angular.module('ShowJunkie.admin', [
 // admin routing config
 adminApp.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
-		.state('addArtist', {
-			url: '/addArtist',
-			templateUrl: 'admin_static/templates/addArtist.html',
-			controller: 'AddArtistCtrl'
-		})
-		.state('addEvent', {
-			url: '/addEvent',
-			templateUrl: 'admin_static/templates/addEvent.html',
-			controller: 'AddEventCtrl'
-		})
 		.state('artists', {
 			url: '/artists',
 			templateUrl: 'admin_static/templates/artists.html',
 			controller: 'ArtistsCtrl'
 		})
-		.state('events', {
-			url: '/events',
-			templateUrl: 'admin_static/templates/events.html',
-			controller: 'EventsCtrl'
+		.state('addArtist', {
+			url: '/addArtist',
+			templateUrl: 'admin_static/templates/addArtist.html',
+			controller: 'AddArtistCtrl'
+		})
+		.state('shows', {
+			url: '/shows',
+			templateUrl: 'admin_static/templates/shows.html',
+			controller: 'ShowsCtrl'
+		})
+		.state('addShow', {
+			url: '/addShow',
+			templateUrl: 'admin_static/templates/addShow.html',
+			controller: 'AddShowCtrl'
+		})
+		.state('venues', {
+			url: '/venues',
+			templateUrl: 'admin_static/templates/venues.html',
+			controller: 'VenuesCtrl'
+		})
+		.state('addVenue', {
+			url: '/addVenue',
+			templateUrl: 'admin_static/templates/addVenue.html',
+			controller: 'AddVenueCtrl'
 		});
+		
 
 	$urlRouterProvider.otherwise('/addArtist');
 
@@ -65,10 +76,6 @@ adminApp.controller('AddArtistCtrl', function($scope, Spotify){
 	};
 });
 
-adminApp.controller('AddEventCtrl', function($scope){
-
-});
-
 // view artists controller
 adminApp.controller('ArtistsCtrl', function($scope, Artist){
 
@@ -77,8 +84,21 @@ adminApp.controller('ArtistsCtrl', function($scope, Artist){
 	})
 });
 
-// view events controller
-adminApp.controller('EventsCtrl', function($scope){
+// Shows
+adminApp.controller('ShowsCtrl', function($scope){
+
+});
+
+adminApp.controller('AddShowCtrl', function($scope){
+
+});
+
+// Venues
+adminApp.controller('VenuesCtrl', function($scope){
+
+});
+
+adminApp.controller('AddVenueCtrl', function($scope){
 
 });
 

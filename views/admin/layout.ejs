@@ -27,17 +27,23 @@
 <body ng-app='ShowJunkie.admin'>
 	<div class='container' ng-controller='AdminCtrl'>
 		<ul class="nav nav-tabs">
-		  <li role="presentation" ng-class="{ active: isActive('addArtist') }">
-		  	<a ui-sref="addArtist">Add artist</a>
-		  </li>
-		  <li role="presentation" ng-class="{ active: isActive('addEvent') }">
-		  	<a ui-sref="addEvent">Add event</a>
-		  </li>
 		  <li role="presentation" ng-class="{ active: isActive('artists') }">
 		  	<a ui-sref="artists">Artists</a>
 		  </li>
-		  <li role="presentation" ng-class="{ active: isActive('events') }">
-		  	<a ui-sref="events">Events</a>
+		  <li role="presentation" ng-class="{ active: isActive('addArtist') }">
+		  	<a ui-sref="addArtist">Add artist</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('shows') }">
+		  	<a ui-sref="shows">Shows</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('addShow') }">
+		  	<a ui-sref="addShow">Add show</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('venues') }">
+		  	<a ui-sref="venues">Venues</a>
+		  </li>
+		  <li role="presentation" ng-class="{ active: isActive('addVenue') }">
+		  	<a ui-sref="addVenue">Add venue</a>
 		  </li>
 		</ul>
 
