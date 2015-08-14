@@ -18,6 +18,8 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
 // DATABASE
 mongoose.connect(envConfig.db);
 require('./server/models/artist');
+require('./server/models/venue');
+require('./server/models/show');
 
 // PASSPORT config
 require('./config/passport')(passport);
