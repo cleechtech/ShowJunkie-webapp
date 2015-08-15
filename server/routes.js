@@ -198,7 +198,6 @@ module.exports = function(app, passport){
 	// get all venues
 	apiRouter.get('/venues', function(req, res){
     	Venue.find({}).exec(function(err, venues){
-    		console.log(venues);
     		res.json(venues);
     	});
     });
@@ -227,7 +226,14 @@ module.exports = function(app, passport){
 	// add show
 	apiRouter.post('/shows', function(req, res){
     	var newShow = new Show();
-    	console.log(req.body);
+
+    	// should be list of artist _ids
+    	newShow.artists = req.body.artists;
+
+    	// should be venue _id
+    	newShow.venue = req.body.venue;
+    	newShow.ticketUrl = req.body.ticketUrl;
+    	newShow.date = req.body.date;
 
     	newShow.save(function(a, b){
     		res.redirect('/admin');

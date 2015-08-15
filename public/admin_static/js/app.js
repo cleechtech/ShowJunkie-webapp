@@ -25,7 +25,12 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 		.state('addShow', {
 			url: '/addShow',
 			templateUrl: 'admin_static/templates/addShow.html',
-			controller: 'AddShowCtrl'
+			controller: 'AddShowCtrl',
+			resolve: {
+				allArtists: function(Artist){
+					return Artist.getAll();
+				}
+			}
 		})
 		.state('venues', {
 			url: '/venues',
@@ -45,7 +50,6 @@ adminApp.config(function($stateProvider, $urlRouterProvider){
 
 // top controller
 adminApp.controller('AdminCtrl', function($scope, $state){
-	console.log($state)
 	$scope.active = $state;
 	$scope.isActive = function(viewLocation){
 		var active = (viewLocation === $state.current.name);
@@ -83,16 +87,45 @@ adminApp.controller('ArtistsCtrl', function($scope, Artist){
 
 	Artist.getAll().then(function(artists){
 		$scope.artists = artists;
-	})
+	});
 });
 
 // Shows
-adminApp.controller('ShowsCtrl', function($scope){
-
+adminApp.controller('ShowsCtrl', function($scope, $http){
+	$http.get('/api/shows').then(function(res){
+		$scope.shows = res.data;
+	});
 });
 
-adminApp.controller('AddShowCtrl', function($scope){
+adminApp.controller('AddShowCtrl', function($scope, $http, allArtists){
+	$scope.newShow = {};
 
+		console.log(allArtists);
+
+	$scope.showFields = [
+		{
+	        key: 'artists',
+	        type: 'select',
+	        templateOptions: {
+	            label: 'Artists performing',
+	            options: allArtists
+	        }
+	    },
+	    {
+	        key: 'venue',
+	        type: 'select',
+	        templateOptions: {
+	            label: 'Artists performing',
+	            options: allArtists
+	        }
+	    },
+	];
+
+	$scope.addShow = function(newShow){
+		$http.post('/api/shows', newShow).then(function(res){
+			console.log(res);
+		});
+	};
 });
 
 // Venues

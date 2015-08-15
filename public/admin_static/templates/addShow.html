@@ -1,1 +1,7 @@
 <h1>Add a Show</h1>
+
+<form name="newShowForm" ng-submit="addShow(newShow)">
+	<formly-form model="newShow" fields="showFields" form="newShowForm">
+	    <button type="submit" class="btn btn-primary" ng-disabled="newShowForm.$invalid">Add</button>
+	</formly-form>
+</form>
