@@ -182,11 +182,16 @@ module.exports = function(app, passport){
 	// ========
 	// add a venue
 	apiRouter.post('/venues', function(req, res){
+		// make venue object
     	var newVenue = new Venue();
-    	console.log(req.body);
+    	newVenue.name = req.body.name;
+    	newVenue.address = req.body.address;
+    	newVenue.url = req.body.url;
+    	newVenue.zipcode = req.body.zipcode;
 
-    	newVenue.save(function(a, b){
-    		res.redirect('/admin');
+    	// save to database
+    	newVenue.save(function(err, venue){
+    		res.json(venue);
     	})
     });
 

@@ -1,15 +1,18 @@
-mean-starter
+showjunkie-webapp
 =====
 
 #### Notes
 
 - music recommendation API: http://www.tastekid.com/read/api
+- server side validation: https://github.com/ctavan/express-validator/blob/master/README.md
 
 
 #### Getting started
 ```
 $ git clone <this_repo>
 $ npm install
+$ cd public && bower install
+$ cd ..
 $ node server
 ```
 

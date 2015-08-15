@@ -1,5 +1,7 @@
 var adminApp = angular.module('ShowJunkie.admin', [
-	'ui.router'
+	'ui.router',
+	'formly',
+	'formlyBootstrap'
 ]);
 
 // admin routing config
@@ -94,12 +96,60 @@ adminApp.controller('AddShowCtrl', function($scope){
 });
 
 // Venues
-adminApp.controller('VenuesCtrl', function($scope){
-
+adminApp.controller('VenuesCtrl', function($scope, $http){
+	$http.get('/api/venues').then(function(res){
+		$scope.venues = res.data;
+	});
 });
 
-adminApp.controller('AddVenueCtrl', function($scope){
+adminApp.controller('AddVenueCtrl', function($scope, $http){
+	$scope.newVenue = {};
 
+	$scope.venueFields = [
+		 {
+            key: 'name',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Venue Name',
+                placeholder: 'What the place is called',
+                required: true
+            }
+        },
+        {
+            key: 'address',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Address',
+                placeholder: 'Street address',
+            }
+        },
+        {
+            key: 'url',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Url',
+                placeholder: 'Venue\'s website',
+            }
+        },
+        {
+            key: 'zipcode',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Zipcode',
+                placeholder: 'zipcode in the bay',
+            }
+        }
+	];
+
+	$scope.addVenue = function(newVenue){
+		$http.post('/api/venues', newVenue).then(function(res){
+			console.log(res);
+		});
+	};
 });
 
 // get data from Spotify

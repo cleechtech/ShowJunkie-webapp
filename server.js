@@ -2,6 +2,7 @@
 var express = require('express'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
+	validator = require('express-validator'),
 	cookieParser = require('cookie-parser'),
 	engine = require('ejs-mate'),
 	flash = require('connect-flash'),
@@ -26,7 +27,8 @@ require('./config/passport')(passport);
 
 // EXPRESS CONFIG
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cors());
 app.use(methodOverride());
 app.use(cookieParser());

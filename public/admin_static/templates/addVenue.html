@@ -1,1 +1,7 @@
 <h1>Add a Venue</h1>
+
+<form name="newVenueForm" ng-submit="addVenue(newVenue)">
+	<formly-form model="newVenue" fields="venueFields" form="newVenueForm">
+	    <button type="submit" class="btn btn-primary" ng-disabled="newVenueForm.$invalid">Add</button>
+	</formly-form>
+</form>
